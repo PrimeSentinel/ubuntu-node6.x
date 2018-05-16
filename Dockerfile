@@ -51,6 +51,14 @@ RUN apt-get update && \
 RUN apt-get -y install xvfb
 RUN apt-get install -y  xfonts-100dpi xfonts-75dpi xfonts-cyrillic  dbus-x11
 
+# install sonar scanner
+RUN wget -q -O sonarscanner.zip https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-2.8.zip
+RUN unzip sonarscanner.zip
+RUN rm sonarscanner.zip
+
+ENV SONAR_RUNNER_HOME=/root/sonar-scanner-2.8
+ENV PATH $PATH:/root/sonar-scanner-2.8/bin
+
 #Install bower, gulp, jspm, grunt, protractor
 RUN npm install -g bower
 RUN npm install -g gulp
