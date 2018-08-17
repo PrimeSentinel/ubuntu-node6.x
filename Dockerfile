@@ -32,8 +32,7 @@ RUN curl -L "https://cli.run.pivotal.io/stable?release=linux64-binary&source=git
 RUN mv cf /usr/local/bin
 
 # Install app dependencies
-
-RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - && apt-get install -qy g++ gcc python nodejs && \
+RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - && apt-get install -qy g++ gcc python nodejs && \
   npm install --quiet node-gyp -g
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - 
 RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
